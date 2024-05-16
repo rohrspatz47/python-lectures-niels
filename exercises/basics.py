@@ -3,10 +3,18 @@ Schreibe je eine Funtion add, subtract, multiply, divide, die die
 jeweilige Grundrechenart auf die beiden übergebenen Parameter A und B
 anwendet.
 '''
-def add(a, b): pass
-# ...
-# ...
-# ...
+
+def add(a, b):
+    return a + b
+
+def subtract(a, b):
+    return a - b
+
+def multiply(a, b):
+    return a * b
+
+def divide(a, b):
+    return a / b
 
 '''
 Schreibe eine Funktion, die eine Temperatur in Celsius in eine Temperatur in
@@ -19,7 +27,7 @@ def inFahrenheit(celsius):
 
     :return: Converted temperature in Fahrenheit
     '''
-    pass
+    return (celsius * 1.8 + 32)
 
 '''
 Schreibe eine Funktion, die eine Temeratur in Fahrenheit in eine Temperatur
@@ -33,31 +41,37 @@ def inCelsius(fahrenheit):
     :return: Converted temperature in Celsius
     :rtype: float
     '''
-    pass
+    return ((fahrenheit - 32) * (5 / 9))
 
 '''
 Schreibe eine Funktion, die prüft, ob eine Zahl gerade ist.
 '''
-def isEven():
+def isEven(eingabe):
     '''
     :param num: Number to test
     :type num: int
 
     :rtype: bool
     '''
-    pass
+    if eingabe % 2 == 0:
+        return True 
+    else:
+        return False
 
 '''
 Schreibe eine Funktion, die prüft, ob eine Zahl ungerade ist.
 '''
-def isOdd():
+def isOdd(eingabe):
     '''
     :param num: Number to test
     :type num: int
 
     :rtype: bool
     '''
-    pass
+    if eingabe % 2 != 0:
+        return True 
+    else:
+        return False
 
 # Kontrollfluss
 
@@ -78,8 +92,14 @@ def jahreszeit(monat):
     :return: Jahreszeit
     :rtype: string
     '''
-    pass
-
+    if monat == "März" or monat == "April" or monat == "Mai":
+        return ("Frühling")
+    elif monat == "Juni" or monat == "Juli" or monat == "August":
+        return ("Sommer")
+    elif monat == "September" or monat == "Oktober" or monat == "November":
+        return ("Herbst")
+    else:
+        return ("Winter")    
 '''
 Schreibe eine Funktion, die die Umsatzsteuer anhand des Umsatzes und des
 Steuerjahres berechnet. Der Steuersatz beträgt 19%. Liegt der Umsatz unter
@@ -87,7 +107,7 @@ der Freigrenze von 17.500 EUR (für die Steuerjahre 2003-2019) bzw. 22.000 EUR
 (für die Steuerjahre ab 2020) soll die Kleinunternehmerregelung angewendet
 und keine Umsatzsteuer berechnet werden. Der Rückgabewert ist dann 0.
 '''
-def umsatzsteuer(umsatz, steuerjahr = 2024):
+def umsatzsteuer(umsatz, steuerjahr):
     '''
     :param umsatz: Umsatz im Steuerjahr
     :type umsatz: float
@@ -97,7 +117,20 @@ def umsatzsteuer(umsatz, steuerjahr = 2024):
     :return: Umsatzsteuer
     :rtype: float
     '''
-    pass
+    if steuerjahr <= 2019:
+        if umsatz < 17500:
+            Umsatzsteuer = 0
+            return Umsatzsteuer
+        else:
+            Umsatzsteuer = umsatz * 0.19
+            return Umsatzsteuer
+    elif umsatz < 22000:
+        Umsatzsteuer = 0
+        return Umsatzsteuer
+    else:
+        Umsatzsteuer = umsatz * 0.19
+        return Umsatzsteuer
+
 
 # match
 
@@ -127,7 +160,12 @@ def area (shape, params):
     :rtype: float
     '''
     import math
-    pass
+    match shape:
+        case "circle":
+            from math import pi
+            return (pi * params["radius"] ** 2)
+        case "triangle":
+            return ((params["base"] * params["height"]) / 2)
 
 # loops
 
@@ -139,7 +177,11 @@ Die Karten werden als Tupel bestehend aus Farbe und Wert dargestellt und alle
 Karten in einer Liste gesammelt zurückgegeben.
 '''
 def deckOfCards():
-    pass
+    farbenliste = ('Clubs', 'Spades', 'Hearts', 'Diamonds')
+    werteliste = ('2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A')
+    for farbe in farbenliste:
+        print(farbe)
+
 
 '''
 Schreibe eine Funktion, die die ersten N Antworten für das FizzBuzz-Spiel
